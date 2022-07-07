@@ -14,38 +14,16 @@ export const HomePage = styled.div`
 
 // ------------------------------------------------- CABEÇALHO
 
-export const AdviceHeaderContainer = styled.section` 
+export const HeaderOverlayTrigger = styled.div`
   position: absolute;
-  top: 20px;
-  display: flex;
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: ${props => props.active ? 'block' : 'none'};
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
-  background-color: rgba(252, 227, 38, 1); */
-`
-
-export const HeaderItem = styled.div` 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 100px;
-  margin-right: 10px;
-  cursor: pointer;
-
-  background: white;
-
-  svg {
-    font-size: 22px;
-  }
-
-  &:last-of-type {
-    margin-right: 0;
-  }
+  background: rgba(0, 0, 0, 0.4);
 `
 
 // ------------------------------------------------- CONTEÚDO PRINCIPAL
@@ -57,8 +35,6 @@ export const AdviceMainContainer = styled.section`
   width: 100%;
   max-width: 600px;
   height: 100%;
-  
-  /* border: 2px solid orange; */
 `
 
 export const AdviceCard = styled.div`
@@ -73,6 +49,7 @@ export const AdviceCardIndex = styled.div`
 
   font-size: 24px;
   font-weight: 200;
+  user-select: none;
 
   color: ${colors.font_secondary};
 `
@@ -87,6 +64,7 @@ export const AdviceCardMessege = styled.h2`
 
 export const AdviceGenerateContainer = styled.section`
   position: absolute;
+  z-index: 1;
   bottom: 40px;
   display: flex;
   justify-content: center;

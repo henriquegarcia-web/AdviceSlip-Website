@@ -1,5 +1,4 @@
 import { ThemeProvider } from 'styled-components'
-import Header from './Components/Header'
 import HomePage from './Pages/Home'
 import GlobalStyle from './Utils/globals'
 
@@ -10,7 +9,6 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
     
-      <Header />
       <HomePage />
     </ThemeProvider>
   )
