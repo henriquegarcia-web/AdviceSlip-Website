@@ -1,16 +1,15 @@
-import { ThemeProvider } from 'styled-components'
 import HomePage from './Pages/Home'
 import GlobalStyle from './Utils/globals'
 
-import { theme } from './Utils/theme'
+import { ApplicationProvider } from './Contexts/ApplicationContext'
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ApplicationProvider>
       <GlobalStyle />
     
       <HomePage />
-    </ThemeProvider>
+    </ApplicationProvider>
   )
 }
 

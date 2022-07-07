@@ -1,11 +1,13 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import * as S from './style'
 
 import Header from '../../Components/Header'
 
+import { useAppContext } from '../../Contexts/ApplicationContext'
+
 const HomePage = () => {
 
-  const [mode, setMode] = useState('inOrder') // 'random' ou 'inOrder' --> 'random' estado inicial
+  const { mode, setMode } = useAppContext()
 
   const data = {
     id: '54',

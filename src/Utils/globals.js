@@ -15,8 +15,6 @@ const GlobalStyle = createGlobalStyle`
     /* user-select: none; */
     transition: .2s;
     letter-spacing: 0.5px;
-
-    /* color: ${props => props.theme.font_color}; */
   }
 
   a:hover {
@@ -37,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-thumb {
-    background: ${props => props.theme.body};
+    background: blue;
     border-radius: 10px;
   } */
 `

@@ -11,7 +11,7 @@ export const Header = styled.div`
   /* border: 2px solid rebeccapurple; */
 `
 
-export const HeaderItem = styled.div` 
+export const HeaderItem = styled.button` 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,6 +22,7 @@ export const HeaderItem = styled.div`
   cursor: pointer;
 
   background: white;
+  border: 2px solid ${props => props.active ? 'black' : 'transparent'};
 
   svg {
     font-size: 22px;

@@ -6,7 +6,16 @@ import { AiOutlineBgColors, AiOutlineFontColors, AiOutlineDownload } from 'react
 import { MdGTranslate } from 'react-icons/md'
 
 import ColorChanger from '../ColorChanger'
+
+import { useAppContext } from '../../Contexts/ApplicationContext'
+import { useEffect } from 'react'
+
 const Header = () => {
+
+  const { setMode, setLanguage } = useAppContext()
+
+  const [currentMode, setCurrentMode] = useState()
+  const [currentLanguage, setCurrentLanguage] = useState()
 
   const [backgroundColorChangerState, setBackgroundColorChangerState] = useState(false)
   const [textColorChangerState, setTextColorChangerState] = useState(false)
@@ -33,13 +42,29 @@ const Header = () => {
     setColorChangerMode(mode)
   }
 
+  useEffect(() => {
+    setMode(currentMode)
+  }, [currentMode])
+
+  useEffect(() => {
+    setMode(currentLanguage)
+  }, [currentLanguage])
+
   return (
     <S.Header>
-      <S.HeaderItem><TbArrowsShuffle /></S.HeaderItem>
+      <S.HeaderItem 
+        active={currentMode}
+        onClick={() => setCurrentMode(!currentMode)}
+      ><TbArrowsShuffle /></S.HeaderItem>
+        
       <S.HeaderItem onClick={() => toogleColorChangerState('background')}><AiOutlineBgColors /></S.HeaderItem>
       <S.HeaderItem onClick={() => toogleColorChangerState('text')}><AiOutlineFontColors /></S.HeaderItem>
       <S.HeaderItem><AiOutlineDownload /></S.HeaderItem>
-      <S.HeaderItem><MdGTranslate /></S.HeaderItem>
+      
+      <S.HeaderItem
+        active={currentLanguage}
+        onClick={() => setCurrentLanguage(!currentLanguage)}
+      ><MdGTranslate /></S.HeaderItem>
 
       <ColorChanger 
         mode={colorChangerMode} 
