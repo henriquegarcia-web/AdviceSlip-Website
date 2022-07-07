@@ -1,14 +1,29 @@
 import styled from "styled-components"
 import colors from "../../Utils/colors"
 
-export const ColorChanger = styled.div`
+export const ColorChangerContainer = styled.div`
   position: absolute;
   top: 100%;
   display: ${props => props.active ? 'flex' : 'none'};
+  margin-top: 15px;
+`
+
+export const ColorChangerOverlayTrigger = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.1);
+`
+
+export const ColorChanger = styled.div`
+  z-index: 100;
+  display: flex;
   flex-direction: column;
   padding: 10px;
   border-radius: 8px;
-  margin-top: 15px;
 
   background: white;
 `
@@ -38,7 +53,6 @@ export const Color = styled.div`
   margin-right: 6px;
 
   background: ${props => props.color};
-
   border: 2px solid transparent;
 
   &:last-of-type {

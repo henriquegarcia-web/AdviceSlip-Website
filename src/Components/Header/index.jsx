@@ -49,10 +49,10 @@ const Header = ({ mode, setMode, handleCaptureClick }) => {
       <S.HeaderItem active={currentMode} onClick={() => setCurrentMode(!currentMode)}>
         <TbArrowsShuffle />
       </S.HeaderItem>
-      <S.HeaderItem onClick={() => toogleColorChangerState('background')}>
+      <S.HeaderItem className='color_changer' onClick={() => toogleColorChangerState('background')}>
         <AiOutlineBgColors />
       </S.HeaderItem>
-      <S.HeaderItem onClick={() => toogleColorChangerState('text')}>
+      <S.HeaderItem className='color_changer' onClick={() => toogleColorChangerState('text')}>
         <AiOutlineFontColors />
       </S.HeaderItem>
       <S.HeaderItem onClick={() => handleCaptureClick()}>
@@ -64,7 +64,9 @@ const Header = ({ mode, setMode, handleCaptureClick }) => {
       <ColorChanger 
         mode={colorChangerMode} 
         activeBackground={backgroundColorChangerState} 
-        activeText={textColorChangerState} 
+        activeText={textColorChangerState}
+        setBackgroundColorChangerState={setBackgroundColorChangerState}
+        setTextColorChangerState={setTextColorChangerState}
       />
 
     </S.Header>

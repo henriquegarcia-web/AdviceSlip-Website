@@ -7,8 +7,6 @@ export const Header = styled.div`
   top: 20px;
   display: flex;
   justify-content: center;
-
-  /* border: 2px solid rebeccapurple; */
 `
 
 export const HeaderItem = styled.button` 
@@ -37,5 +35,13 @@ export const HeaderItem = styled.button`
 
   &:nth-of-type(1) {
     margin-right: 20px;
+  }
+
+  &.color_changer {
+    z-index: 100;
+  }
+
+  &:hover {
+    transform: scale(1.04);
   }
 `

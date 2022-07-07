@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import * as S from './style'
+import * as I from 'react-icons/fi'
 
 import Header from '../../Components/Header'
 
@@ -13,6 +14,8 @@ const HomePage = () => {
 
   const [currentSlipCounter, setCurrentSlipCounter] = useState(1)
   const [currentSlip, setCurrentSlip] = useState()
+
+  const [loading, setLoading] = useState()
 
   const handleCaptureClick = useCallback(async () => {
     const pricingTableElmt = document.querySelector('.advice_card')
@@ -72,12 +75,12 @@ const HomePage = () => {
                 if (currentSlipCounter === 1) return
                 setCurrentSlipCounter(currentSlipCounter - 1)
               }}
-            >Previous Advice</button>
+            ><I.FiArrowLeftCircle />  Previous Advice</button>
             <button
               onClick={() => {
                 setCurrentSlipCounter(currentSlipCounter + 1)
               }}
-            >Next Advice</button>
+            >Next Advice <I.FiArrowRightCircle /></button>
           </>
         )}
       </S.AdviceGenerateContainer>

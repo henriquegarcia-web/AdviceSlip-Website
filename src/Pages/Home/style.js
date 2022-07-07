@@ -71,6 +71,8 @@ export const AdviceGenerateContainer = styled.section`
   justify-content: center;
 
   button {
+    display: flex;
+    align-items: center;
     padding: 10px 20px;
     border-radius: 100px;
     text-transform: uppercase;
@@ -83,8 +85,41 @@ export const AdviceGenerateContainer = styled.section`
 
     background-color: white;
 
+    svg {
+      font-size: 20px;
+    }
+
     &:last-of-type {
       margin-right: 0;
+
+      svg {
+        margin-left: 8px;
+      }
+    }
+
+    &:first-of-type {
+      svg {
+        margin-right: 8px;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.04);
+    }
+
+  }
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+      margin-bottom: 10px;
+      justify-content: center;
+
+      svg {
+         display: none;
+      }
     }
   }
 `
