@@ -18,7 +18,7 @@ export const HeaderItem = styled.button`
   width: 44px;
   height: 44px;
   border-radius: 100px;
-  margin-right: 10px;
+  margin-right: 8px;
   cursor: pointer;
 
   background: white;
@@ -32,5 +32,10 @@ export const HeaderItem = styled.button`
 
   &:last-of-type {
     margin-right: 0;
+    margin-left: 10px;
+  }
+
+  &:nth-of-type(1) {
+    margin-right: 20px;
   }
 `

@@ -75,6 +75,7 @@ export const AdviceGenerateContainer = styled.section`
     text-transform: uppercase;
     cursor: pointer;
     margin-right: 15px;
+    transition: .4s;
 
     font-size: 16px;
     font-weight: 500;

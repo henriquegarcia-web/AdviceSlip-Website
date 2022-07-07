@@ -1,13 +1,11 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 import * as S from './style'
 
 import Header from '../../Components/Header'
 
-import { useAppContext } from '../../Contexts/ApplicationContext'
-
 const HomePage = () => {
 
-  const { mode, setMode } = useAppContext()
+  const [mode, setMode] = useState(false) // 'random' --> true / 'inOrder' --> false
 
   const data = {
     id: '54',
@@ -19,9 +17,9 @@ const HomePage = () => {
 
       {/* ------------------------------------------- CABEÇALHO ------ */}
 
-      <Header />
+      <Header mode={mode} setMode={setMode} />
       
-      {/* ------------------------------- CONTEÚDO PRINCIPAL ------ */}
+      {/* ---------------------------------- CONTEÚDO PRINCIPAL ------ */}
 
       <S.AdviceMainContainer>
         <S.AdviceCard>
@@ -30,10 +28,10 @@ const HomePage = () => {
         </S.AdviceCard>
       </S.AdviceMainContainer>
 
-      {/* ------------------------------------------- RODAPÉ ------ */}      
+      {/* ----------------------------------------------- RODAPÉ ------ */}      
 
       <S.AdviceGenerateContainer>
-        {mode === 'random' ? (
+        {mode ? (
           <>
             <button>Generate Another Advice</button>
           </>
