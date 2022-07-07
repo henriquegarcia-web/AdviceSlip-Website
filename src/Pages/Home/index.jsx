@@ -1,7 +1,10 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import * as S from './style'
 
 import Header from '../../Components/Header'
+
+import downloadjs from 'downloadjs';
+import html2canvas from 'html2canvas';
 
 const HomePage = () => {
 
@@ -12,23 +15,32 @@ const HomePage = () => {
     advice: 'The more ideas that you give away, the more ideas that will come to you.'
   }
 
+  const handleCaptureClick = useCallback(async () => {
+    const pricingTableElmt = document.querySelector('.advice_card')
+    if (!pricingTableElmt) return
+
+    const canvas = await html2canvas(pricingTableElmt)
+    const dataURL = canvas.toDataURL('image/png')
+    downloadjs(dataURL, 'download.png', 'image/png')
+  }, [])
+
   return (
     <S.HomePage id='background'>
 
-      {/* ------------------------------------------- CABEÇALHO ------ */}
+      {/* ----------------------------------------------- CABEÇALHO */}
 
-      <Header mode={mode} setMode={setMode} />
+      <Header mode={mode} setMode={setMode} handleCaptureClick={handleCaptureClick} />
       
-      {/* ---------------------------------- CONTEÚDO PRINCIPAL ------ */}
+      {/* ----------------------------------------------- CONTEÚDO PRINCIPAL */}
 
       <S.AdviceMainContainer>
-        <S.AdviceCard>
+        <S.AdviceCard className='advice_card'>
           <S.AdviceCardIndex>#{data.id}</S.AdviceCardIndex>
           <S.AdviceCardMessege id='text'>{data.advice}</S.AdviceCardMessege>
         </S.AdviceCard>
       </S.AdviceMainContainer>
 
-      {/* ----------------------------------------------- RODAPÉ ------ */}      
+      {/* ----------------------------------------------- RODAPÉ */}      
 
       <S.AdviceGenerateContainer>
         {mode ? (

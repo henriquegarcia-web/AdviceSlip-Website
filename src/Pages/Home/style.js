@@ -33,7 +33,7 @@ export const AdviceMainContainer = styled.section`
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   height: 100%;
 `
 
@@ -42,6 +42,7 @@ export const AdviceCard = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 60px;
+  padding: 50px 30px;
 `
 
 export const AdviceCardIndex = styled.div`

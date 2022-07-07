@@ -8,7 +8,7 @@ import ColorChanger from '../ColorChanger'
 
 import { useEffect } from 'react'
 
-const Header = ({ mode, setMode }) => {
+const Header = ({ mode, setMode, handleCaptureClick }) => {
 
   const [currentMode, setCurrentMode] = useState()
 
@@ -43,20 +43,30 @@ const Header = ({ mode, setMode }) => {
 
   return (
     <S.Header>
-      <S.HeaderItem 
-        active={currentMode}
-        onClick={() => setCurrentMode(!currentMode)}
-      ><TbArrowsShuffle /></S.HeaderItem>
-        
-      <S.HeaderItem onClick={() => toogleColorChangerState('background')}><AiOutlineBgColors /></S.HeaderItem>
-      <S.HeaderItem onClick={() => toogleColorChangerState('text')}><AiOutlineFontColors /></S.HeaderItem>
-      <S.HeaderItem><AiOutlineDownload /></S.HeaderItem>
+
+      {/* ----------------------------------------------- ITEMS DO HEADER */}
+
+      <S.HeaderItem active={currentMode} onClick={() => setCurrentMode(!currentMode)}>
+        <TbArrowsShuffle />
+      </S.HeaderItem>
+      <S.HeaderItem onClick={() => toogleColorChangerState('background')}>
+        <AiOutlineBgColors />
+      </S.HeaderItem>
+      <S.HeaderItem onClick={() => toogleColorChangerState('text')}>
+        <AiOutlineFontColors />
+      </S.HeaderItem>
+      <S.HeaderItem onClick={() => handleCaptureClick()}>
+        <AiOutlineDownload />
+      </S.HeaderItem>
+      
+      {/* ----------------------------------------------- CONTÂINER DE TROCA DE CORES */}
 
       <ColorChanger 
         mode={colorChangerMode} 
         activeBackground={backgroundColorChangerState} 
         activeText={textColorChangerState} 
       />
+
     </S.Header>
   )
 }

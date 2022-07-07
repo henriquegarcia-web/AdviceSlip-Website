@@ -28,10 +28,16 @@ const ColorChanger = ({ mode, activeBackground, activeText }) => {
             key={id}
             color={color}
             onClick={(e) => {
-              const elementToModify = document.getElementById(mode)
-              mode === 'background' 
-                ? elementToModify.style.background = color
-                : elementToModify.style.color = color
+              const background = document.getElementById(mode)
+              const card = document.querySelector('.advice_card')
+
+              if (mode === 'background') {
+                background.style.background = color
+                card.style.background = color
+                return
+              }
+              
+              background.style.color = color
             }}
           ></S.Color>
         ))}
