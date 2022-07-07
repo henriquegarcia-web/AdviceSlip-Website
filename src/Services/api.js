@@ -1,8 +1,11 @@
 import axios from "axios"
 
-const getData = async () => {
+export const getData = async () => {
   let res = await axios.get('https://api.adviceslip.com/advice')
   return res.data
 }
 
-export default getData
+export const getDataByID = async (id) => {
+  let res = await axios.get(`https://api.adviceslip.com/advice/${id}`)
+  return res.data
+}

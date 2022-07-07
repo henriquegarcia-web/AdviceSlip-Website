@@ -5,12 +5,11 @@ const ColorChanger = ({ mode, activeBackground, activeText }) => {
   const colors = [
     { id: '1', color: 'rgba(252, 227, 38, 1)' },
     { id: '2', color: 'rgba( 66, 227, 245, 1)' },
-    { id: '3', color: 'red' },
-    { id: '4', color: 'orangered' },
-    { id: '5', color: 'green' },
-    { id: '6', color: 'purple' },
-    { id: '7', color: 'pink' },
-    { id: '8', color: 'black' },
+    { id: '3', color: 'rgba(255, 71, 51, 1)' },
+    { id: '4', color: 'rgba(255, 180, 51, 1)' },
+    { id: '5', color: 'rgba(51, 255, 92, 1)' },
+    { id: '6', color: 'rgba(173, 51, 255, 1)' },
+    { id: '7', color: 'rgba(255, 51, 238, 1)' },
   ]
 
   return (

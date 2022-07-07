@@ -5,12 +5,13 @@ import Header from '../../Components/Header'
 
 import downloadjs from 'downloadjs'
 import html2canvas from 'html2canvas'
-import getData from '../../Services/api'
+import { getData, getDataByID } from '../../Services/api'
 
 const HomePage = () => {
 
   const [mode, setMode] = useState(false) // 'random' --> true / 'inOrder' --> false
 
+  const [currentSlipCounter, setCurrentSlipCounter] = useState(1)
   const [currentSlip, setCurrentSlip] = useState()
 
   const handleCaptureClick = useCallback(async () => {
@@ -22,15 +23,24 @@ const HomePage = () => {
     downloadjs(dataURL, 'download.png', 'image/png')
   }, [])
 
-  const getCurrentData = async () => {
+  const getRandomData = async () => {
     const slipData = await getData()
     setCurrentSlip(slipData)
   }
 
+  const getEspecificData = async (id) => {
+    const slipData = await getDataByID(id)
+    setCurrentSlip(slipData)
+  }
+
   useEffect(() => {
-    getCurrentData()
-      .catch(console.error)
-  }, [])
+    if (mode) {
+      getRandomData()
+        .catch(console.error)
+      return
+    }
+    getEspecificData(currentSlipCounter)
+  }, [mode, currentSlipCounter])
   
   return (
     <S.HomePage id='background'>
@@ -53,12 +63,21 @@ const HomePage = () => {
       <S.AdviceGenerateContainer>
         {mode ? (
           <>
-            <button onClick={getCurrentData}>Generate Another Advice</button>
+            <button onClick={getRandomData}>Generate Another Advice</button>
           </>
         ) : (
           <>
-            <button>Previous Advice</button>
-            <button>Next Advice</button>
+            <button
+              onClick={() => {
+                if (currentSlipCounter === 1) return
+                setCurrentSlipCounter(currentSlipCounter - 1)
+              }}
+            >Previous Advice</button>
+            <button
+              onClick={() => {
+                setCurrentSlipCounter(currentSlipCounter + 1)
+              }}
+            >Next Advice</button>
           </>
         )}
       </S.AdviceGenerateContainer>
