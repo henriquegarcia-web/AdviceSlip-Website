@@ -1,7 +1,8 @@
 import styled from "styled-components"
 import colors from "../../Utils/colors"
 
-export const HomePage = styled.div` 
+export const HomePage = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,8 +12,45 @@ export const HomePage = styled.div`
   background-color: rgba(252, 227, 38, 1);
 `
 
-export const AdviceContainer = styled.div`
-  position: relative;
+// ------------------------------------------------- CABEÇALHO
+
+export const AdviceHeaderContainer = styled.section` 
+  position: absolute;
+  top: 20px;
+  display: flex;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+
+  background-color: rgba(252, 227, 38, 1); */
+`
+
+export const HeaderItem = styled.div` 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 100px;
+  margin-right: 10px;
+  cursor: pointer;
+
+  background: white;
+
+  svg {
+    font-size: 22px;
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+`
+
+// ------------------------------------------------- CONTEÚDO PRINCIPAL
+
+export const AdviceMainContainer = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,15 +83,16 @@ export const AdviceCardMessege = styled.h2`
   text-align: center;
   line-height: 40px;
 `
+// ------------------------------------------------- RODAPÉ
 
-export const AdviceGenerateContainer = styled.div`
+export const AdviceGenerateContainer = styled.section`
   position: absolute;
-  bottom: 60px;
+  bottom: 40px;
   display: flex;
   justify-content: center;
 
   button {
-    padding: 8px 18px;
+    padding: 10px 20px;
     border-radius: 100px;
     text-transform: uppercase;
     cursor: pointer;
