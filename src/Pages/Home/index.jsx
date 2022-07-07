@@ -1,19 +1,17 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import * as S from './style'
 
 import Header from '../../Components/Header'
 
-import downloadjs from 'downloadjs';
-import html2canvas from 'html2canvas';
+import downloadjs from 'downloadjs'
+import html2canvas from 'html2canvas'
+import getData from '../../Services/api'
 
 const HomePage = () => {
 
   const [mode, setMode] = useState(false) // 'random' --> true / 'inOrder' --> false
 
-  const data = {
-    id: '54',
-    advice: 'The more ideas that you give away, the more ideas that will come to you.'
-  }
+  const [currentSlip, setCurrentSlip] = useState()
 
   const handleCaptureClick = useCallback(async () => {
     const pricingTableElmt = document.querySelector('.advice_card')
@@ -24,6 +22,16 @@ const HomePage = () => {
     downloadjs(dataURL, 'download.png', 'image/png')
   }, [])
 
+  const getCurrentData = async () => {
+    const slipData = await getData()
+    setCurrentSlip(slipData)
+  }
+
+  useEffect(() => {
+    getCurrentData()
+      .catch(console.error)
+  }, [])
+  
   return (
     <S.HomePage id='background'>
 
@@ -35,8 +43,8 @@ const HomePage = () => {
 
       <S.AdviceMainContainer>
         <S.AdviceCard className='advice_card'>
-          <S.AdviceCardIndex>#{data.id}</S.AdviceCardIndex>
-          <S.AdviceCardMessege id='text'>{data.advice}</S.AdviceCardMessege>
+          <S.AdviceCardIndex>#{currentSlip?.slip.id}</S.AdviceCardIndex>
+          <S.AdviceCardMessege id='text'>{currentSlip?.slip.advice}</S.AdviceCardMessege>
         </S.AdviceCard>
       </S.AdviceMainContainer>
 
@@ -45,7 +53,7 @@ const HomePage = () => {
       <S.AdviceGenerateContainer>
         {mode ? (
           <>
-            <button>Generate Another Advice</button>
+            <button onClick={getCurrentData}>Generate Another Advice</button>
           </>
         ) : (
           <>
